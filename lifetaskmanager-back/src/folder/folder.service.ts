@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TaskService } from 'src/task/task.service';
 import { Repository } from 'typeorm';
@@ -25,7 +25,13 @@ export class FolderService {
     }
 
     async deleteFolder(id:number){
-        return await this.folderRP.delete(id);
+        await this.taskService.deleteAllTasksFromFolder(id)
+        .then(()=>{
+            return this.folderRP.delete(id);
+        })
+        .catch((error)=>{
+            return error;
+        });
     }
 
     async findAllTasksFromFolder(id:number){

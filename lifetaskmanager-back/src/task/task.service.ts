@@ -26,7 +26,13 @@ export class TaskService {
     }
 
     async getTasksFromFolder(folderId:number){
-        //TRAER TODOS LOS TASKS QUE CORRESPONDAN CON EL ID EN SQL
         return this.taskRP.find({"folderId":folderId});
+    }
+
+    async deleteAllTasksFromFolder(folderId:number){
+        const tasks = await this.taskRP.find({"folderId":folderId});
+        tasks.forEach(task => {
+            this.deleteTask(task.id);
+        });
     }
 }
