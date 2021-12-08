@@ -14,6 +14,7 @@ export class TaskService {
 
     async updateTask(id:number, task:any){
         await this.taskRP.update(id, task);
+        return task;
     }
 
     async findAll(){
