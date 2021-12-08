@@ -7,4 +7,5 @@
 <p>• NestJs 8.0.0</p>
 <p>• TypeORM MySQL 0.2.41</p>
 <p>• MySQL 8.0</p>
+<p>• NPM 8.2.0</p>
 <hr>
