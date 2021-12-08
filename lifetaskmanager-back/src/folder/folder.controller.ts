@@ -1,0 +1,34 @@
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { FolderModel } from './folder.interface';
+import { FolderService } from './folder.service';
+
+@Controller('folders')
+export class FolderController {
+    constructor(private folderService:FolderService){};
+
+    @Post()
+    addFolder(@Body() folder:FolderModel) : any{
+        return this.folderService.addFolder(folder);
+    }
+
+    @Get()
+    getFolder():any{
+        return this.folderService.findAll();
+    }
+
+    @Put(":id")
+    updateFolder(@Body() folder: FolderModel, @Param() params): any{
+        return this.folderService.updateFolder(params.id, folder);
+    }
+
+    @Delete(":id")
+    deleteFolder(@Param() params): any{
+        return this.folderService.deleteFolder(params.id);
+    }
+
+    @Get(":id/tasks")
+    getTasksFromFolder(@Param() params):any{
+        return this.folderService.findAllTasksFromFolder(params.id);
+    }
+
+}

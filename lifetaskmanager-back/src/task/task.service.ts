@@ -24,4 +24,9 @@ export class TaskService {
     async deleteTask(id:number){
         return await this.taskRP.delete(id);
     }
+
+    async getTasksFromFolder(folderId:number){
+        //TRAER TODOS LOS TASKS QUE CORRESPONDAN CON EL ID EN SQL
+        return this.taskRP.find({"folderId":folderId});
+    }
 }

@@ -1,16 +1,13 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity("task")
-export class TaskEntity {
+@Entity("folder")
+export class FolderEntity {
     @PrimaryGeneratedColumn()
     id:number;
 
     @Column()
-    folderId:number;
+    userId:number;
 
     @Column()
     description:String;
-
-    @Column()
-    finished:boolean;
 }
