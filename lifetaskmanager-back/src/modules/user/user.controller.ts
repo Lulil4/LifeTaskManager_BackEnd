@@ -48,7 +48,7 @@ export class UserController {
 
         const newToken =  await jwt.sign(userToken, "secretword");
 
-        return response.status(200).json({newToken, id});
+        return response.status(200).json({newToken});
     }
 
     @Delete(":id")
