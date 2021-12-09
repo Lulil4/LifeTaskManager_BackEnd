@@ -20,4 +20,8 @@ export class UserService {
     async findByUsername(user:string){
         return this.userRP.findOne({username:user});
     }
+
+    async deleteUser(id:number){
+        return this.userRP.delete(id);
+    }
 }

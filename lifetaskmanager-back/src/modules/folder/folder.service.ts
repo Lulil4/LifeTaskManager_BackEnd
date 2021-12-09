@@ -32,4 +32,8 @@ export class FolderService {
     async findAllTasksFromFolder(id:number){
         return this.taskService.getTasksFromFolder(id);
     }
+
+    async findAllFoldersFromUser(id:number){
+        return await this.folderRP.find({userId:id});
+    }
 }

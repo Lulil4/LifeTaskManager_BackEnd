@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Res, Delete } from '@nestjs/common';
 import { UserModel } from './user.interface';
 import { UserService } from './user.service';
 import * as bcrypt from 'bcrypt';
@@ -31,21 +31,28 @@ export class UserController {
     }
 
     @Post("/login")
-    async loginUser(@Body() user:UserModel){
+    async loginUser(@Body() user:UserModel, @Res() response){
         const {username,password} = user;
         const userOnDb = await this.userService.findByUsername(username);
         const correctPass = userOnDb == null? false : await bcrypt.compare(password, userOnDb.password);
-        console.log(correctPass);
+
         if (!(user && correctPass)){
-            return "ERROR. LLAMAR A MIDDLEWARE ACA";
+            return response.status(404).json({error:"Validation error"});
         }
+        const {id} = userOnDb;
 
         const userToken =  {
-            username: user.username,
-            id: user.id,
+            id: userOnDb.id,
+            username: userOnDb.username
         };
 
-        return await jwt.sign(userToken, "secretword", {expiresIn: "12h"});
+        const newToken =  await jwt.sign(userToken, "secretword");
+
+        return response.status(200).json({newToken, id});
     }
 
+    @Delete(":id")
+    deleteFolder(@Param() params): any{
+        return this.userService.deleteUser(params.id);
+    }
 }

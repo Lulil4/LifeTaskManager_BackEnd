@@ -21,6 +21,11 @@ export class FolderController {
         return this.folderService.deleteFolder(params.id);
     }
 
+    @Get("/:id/user")
+    getFolderFromUser(@Param() params):any{
+        return this.folderService.findAllFoldersFromUser(params.id);
+    }
+
     @Get(":id/tasks")
     getTasksFromFolder(@Param() params):any{
         return this.folderService.findAllTasksFromFolder(params.id);
