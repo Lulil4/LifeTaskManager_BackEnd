@@ -15,11 +15,6 @@ export class FolderService {
         return task;
     }
 
-    async updateFolder(id:number, task:any){
-        await this.folderRP.update(id, task);
-        return task;
-    }
-
     async findAll(){
         return await this.folderRP.find();
     }

@@ -15,12 +15,7 @@ export class FolderController {
     getFolder():any{
         return this.folderService.findAll();
     }
-
-    @Put(":id")
-    updateFolder(@Body() folder: FolderModel, @Param() params): any{
-        return this.folderService.updateFolder(params.id, folder);
-    }
-
+    
     @Delete(":id")
     deleteFolder(@Param() params): any{
         return this.folderService.deleteFolder(params.id);
