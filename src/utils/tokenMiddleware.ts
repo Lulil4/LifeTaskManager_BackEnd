@@ -8,6 +8,7 @@ import * as jwt from 'jsonwebtoken';
         if (bearerToken !== undefined && bearerToken != "null"){
             try{
                 const realToken = bearerToken.substring(1, bearerToken.length-1);
+                console.log(realToken);
                 const data = await jwt.verify(realToken, SECRET); 
                 next(); 
             }
