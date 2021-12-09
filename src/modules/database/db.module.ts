@@ -14,7 +14,7 @@ import { UserEntity } from '../user/user-entity';
             port:3306,
             username:'b32d7cf1718f2e',
             password:'87050f14',
-            database:'db_rlm',
+            database:'heroku_5d1208c4743263e',
             entities:[
                 TaskEntity, 
                 FolderEntity,
