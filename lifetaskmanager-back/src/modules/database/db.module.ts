@@ -10,10 +10,10 @@ import { UserEntity } from '../user/user-entity';
     imports:[
         TypeOrmModule.forRoot({
             type:'mysql',
-            host:'localhost',
+            host:'us-cdbr-east-04.cleardb.com',
             port:3306,
-            username:'root',
-            password:'123456',
+            username:'b32d7cf1718f2e',
+            password:'87050f14',
             database:'db_rlm',
             entities:[
                 TaskEntity, 
