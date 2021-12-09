@@ -35,7 +35,6 @@ export class UserController {
         const {username,password} = user;
         const userOnDb = await this.userService.findByUsername(username);
         const correctPass = userOnDb == null? false : await bcrypt.compare(password, userOnDb.password);
-
         if (!(user && correctPass)){
             return response.status(404).json({error:"Validation error"});
         }
