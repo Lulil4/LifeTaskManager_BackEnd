@@ -1,6 +1,6 @@
 import { Module, Global } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TaskModule } from 'src/task/task.module';
+import { TaskModule } from 'src/modules/task/task.module';
 import { FolderEntity } from './folder-entity';
 import { FolderController } from './folder.controller';
 import { FolderService } from './folder.service';

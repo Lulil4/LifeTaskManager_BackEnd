@@ -1,6 +1,6 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TaskService } from 'src/task/task.service';
+import { TaskService } from 'src/modules/task/task.service';
 import { Repository } from 'typeorm';
 import { FolderEntity } from './folder-entity';
 

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FolderEntity } from 'src/folder/folder-entity';
-import { TaskEntity } from 'src/task/task-entity';
-import { TaskModule } from 'src/task/task.module';
+import { FolderEntity } from 'src/modules/folder/folder-entity';
+import { TaskEntity } from 'src/modules/task/task-entity';
+import { TaskModule } from 'src/modules/task/task.module';
 import { Connection } from 'typeorm';
+import { UserEntity } from '../user/user-entity';
 
 @Module({
     imports:[
@@ -13,10 +14,11 @@ import { Connection } from 'typeorm';
             port:3306,
             username:'root',
             password:'123456',
-            database:'db_tasks',
+            database:'db_rlm',
             entities:[
                 TaskEntity, 
-                FolderEntity
+                FolderEntity,
+                UserEntity
             ],
             synchronize:true
         }),

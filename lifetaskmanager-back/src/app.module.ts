@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DbModule } from './database/db.module';
-import { FolderModule } from './folder/folder.module';
-import { TaskModule } from './task/task.module';
+import { DbModule } from './modules/database/db.module';
+import { FolderModule } from './modules/folder/folder.module';
+import { TaskModule } from './modules/task/task.module';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [DbModule, TaskModule, FolderModule]
+  imports: [DbModule, TaskModule, FolderModule, UserModule]
 })
 export class AppModule {}
